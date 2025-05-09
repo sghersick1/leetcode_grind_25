@@ -1,4 +1,4 @@
-### Leetcode Practice
+# Leetcode Practice
 
 ### Objective
 - prepare for the Spring/Summer 2026 SWE internship recruitment cycle
