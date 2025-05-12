@@ -1,0 +1,5 @@
+# Leetcode 141 LinkedListCycle
+
+### Brute Force
+1. loop through list, adding each to a hashset
+2. If node already visited return true, else false
