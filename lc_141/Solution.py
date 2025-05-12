@@ -7,42 +7,40 @@ class ListNode:
         self.val = x
         self.next = None
 
+# create linked list
+def linkedList(values, pos):
+    size = len(values)
+
+    #create last node
+    tail = ListNode(values[size-1])
+    prev = tail
+    for i in range(size-2, 0, -1):
+        cur = ListNode(values[i])
+        cur.next = prev
+        prev = cur
+        
+        if i == pos:
+            tail.next = cur
+    
+    return cur
+
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        print(head[0].val)
-        return True   
+       visited = set()
+       current = head
 
-# create a linked list
-def createLinkedList(values, pos):
-    # not -> ! (negation)
-    # special cases: [] -> True if empty, "" -> true is empty string, 0 -> true "empty" int
-    if not values:
-        return None
-    
-    node = []
-    # create all of the nodes
-    for i,v in enumerate(values):
-        node.append(ListNode(v))
+       while current:
+           if current in visited:
+               return True 
+           visited.add(current)
+           current = current.next 
 
-    # link the nodes
-    for i in range(0, len(values)-1):
-        node[i].next = node[i+1]
-
-    #final node links to pos, or None if -1
-    if pos == -1:
-        node[i+1] = None
-    else:
-        node[i+1] = node[pos]
-
-    return node
-
+       return False
 # main method
 def main():
+    head = linkedList([3,2-1,0,4], -1)
     sol = Solution()
-    head = createLinkedList([3,2,0,-4], -1)
-    res = sol.hasCycle(head)
-    print(res)
-
+    print(sol.hasCycle(head))
 
 if __name__ == "__main__":
     main()
